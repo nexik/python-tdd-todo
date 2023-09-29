@@ -1,6 +1,8 @@
 import unittest
 import threading
 
+from todo.app import TODOApp
+
 class TestTODOAcceptance(unittest.TestCase):
     def test_main(self):
         app = TODOApp(io=(self.fake_input, self.fake_ouput))
