@@ -16,8 +16,37 @@ class TestTODOAcceptance(unittest.TestCase):
             "> "
         ))
 
+        self.send_input("add kupić mleko")
+        welcome = self.get_output()
+        self.assertEqual(welcome, (
+            "Lista rzeczy do zrobienia:\n"
+            "1. kupić mleko"
+            "\n"
+            "> "
+        ))
+
+        self.send_input("add kupić jajka")
+        welcome = self.get_output()
+        self.assertEqual(welcome, (
+            "Lista rzeczy do zrobienia\n"
+            "1. kupić mleko"
+            "2. kupic jajka"
+            "\n"
+            "> "
+        ))
+
+        self.send_input("del 1")
+        welcome = self.get_output()
+        self.assertEqual(welcome, (
+            "Lista rzeczy do zrobienia\n"
+            "1. kupić jajka"
+            "\n"
+            "> "
+        ))
+
         self.send_input("quit")
         app_thread.join(timeout=1)
         self.assertEqual(self.get_output(), "Żegnaj!\n")
+    
 
 
